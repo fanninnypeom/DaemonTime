@@ -35,39 +35,52 @@
         </CommandBar>
     </Page.BottomAppBar>
 
-
     <Pivot x:Name="rootPivot" Title="统计分析" Background="white" HeaderTemplate="{StaticResource HeaderTemplate}">
         <PivotItem Header="Resources/统计.png" >
-        
-        <StackPanel>
+
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="开始日期" Height="20"></TextBlock>
+                        <input:SfDatePicker x:Name="datePickerw"  Width="150" />
+                    </StackPanel>
+                    <Button FontFamily="Resources/iconfont.ttf#iconFont" Content="&#xe609;" Click="drawWeek"></Button>
+                </StackPanel>
                 <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                <syncfusion:SfChart HorizontalAlignment="Center" VerticalAlignment="Center" Header="周趋势图" FontSize="16" 
+                    <syncfusion:SfChart HorizontalAlignment="Center" VerticalAlignment="Center" Header="周趋势图" FontSize="16" 
                     Height="200" Width="300" x:Name="weekChart">
- <syncfusion:SfChart.PrimaryAxis>
-        <syncfusion:CategoryAxis Header="day" FontSize="14"/>
-    </syncfusion:SfChart.PrimaryAxis>
-            
+                        <syncfusion:SfChart.PrimaryAxis>
+                            <syncfusion:CategoryAxis Header="day" FontSize="14"/>
+                        </syncfusion:SfChart.PrimaryAxis>
 
-    <!--Initialize the vertical axis for SfChart-->
-    <syncfusion:SfChart.SecondaryAxis>
-        <syncfusion:NumericalAxis Header="hours" FontSize="14"/>
-    </syncfusion:SfChart.SecondaryAxis>
 
-            
-    <!--Adding Legend to the SfChart-->
-    <syncfusion:SfChart.Legend>
-        <syncfusion:ChartLegend Visibility="Visible"/>
-    </syncfusion:SfChart.Legend>
-            
+                        <!--Initialize the vertical axis for SfChart-->
+                        <syncfusion:SfChart.SecondaryAxis>
+                            <syncfusion:NumericalAxis Header="hours" FontSize="14"/>
+                        </syncfusion:SfChart.SecondaryAxis>
 
-                </syncfusion:SfChart >
-            </Grid>
+
+                        <!--Adding Legend to the SfChart-->
+                        <syncfusion:SfChart.Legend>
+                            <syncfusion:ChartLegend Visibility="Visible"/>
+                        </syncfusion:SfChart.Legend>
+
+
+                    </syncfusion:SfChart >
+                </Grid>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="开始日期" Height="20"></TextBlock>
+                        <input:SfDatePicker x:Name="datePickerM"  Width="150" />
+                    </StackPanel>
+                    <Button FontFamily="Resources/iconfont.ttf#iconFont" Content="&#xe609;" Click="drawMonth"></Button>
+                </StackPanel>
                 <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                     <syncfusion:SfChart HorizontalAlignment="Center" VerticalAlignment="Center" Header="月趋势图" FontSize="16" 
-                    Height="200" Width="300" x:Name="monthChart">
+                    Height="200" Width="500" x:Name="monthChart">
 
                         <syncfusion:SfChart.PrimaryAxis>
-                            <syncfusion:CategoryAxis Header="week" FontSize="14"/>
+                            <syncfusion:CategoryAxis Header="day" FontSize="14"/>
                         </syncfusion:SfChart.PrimaryAxis>
                         <!--Initialize the vertical axis for SfChart-->
                         <syncfusion:SfChart.SecondaryAxis>
@@ -81,26 +94,53 @@
                 </Grid>
             </StackPanel>
         </PivotItem>
+        
         <PivotItem Header="Resources/柱状图.png">
             <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                 <StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="10">
-                <StackPanel Orientation="Horizontal">
-                    <input:SfDatePicker x:Name="datePicker"  Width="150" />
-                    <TextBlock Text="开始日期" Height="20"></TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <input:SfDatePicker x:Name="datePicker1" Width="150" />
-                    <TextBlock Text="终止日期" Height="20"></TextBlock>
-                </StackPanel>
-            <Button FontFamily="Resources/iconfont.ttf#iconFont" Content="&#xe609;" Click="drawBar"></Button>
-            </StackPanel>
-            
-                <syncfusion:SfChart HorizontalAlignment="Center" VerticalAlignment="Center" Header="用时统计图" FontSize="16" 
-                    Height="200" Width="300" x:Name="BarChart">
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="开始日期" Height="20"></TextBlock>
+                            <input:SfDatePicker x:Name="datePicker"  Width="150" />
+                        </StackPanel>
+                        <Button FontFamily="Resources/iconfont.ttf#iconFont" Content="&#xe609;" Click="drawBar"></Button>
+                    </StackPanel>
 
+                    <syncfusion:SfChart HorizontalAlignment="Center" VerticalAlignment="Center" Header="七天用时统计图" FontSize="16" 
+                    Height="200" Width="300" x:Name="ColumnChart">
+
+                        <syncfusion:SfChart.PrimaryAxis>
+                            <syncfusion:CategoryAxis Header="week" FontSize="14"/>
+                        </syncfusion:SfChart.PrimaryAxis>
+                        <!--Initialize the vertical axis for SfChart-->
+                        <syncfusion:SfChart.SecondaryAxis>
+                            <syncfusion:NumericalAxis Header="hours" FontSize="14"/>
+                        </syncfusion:SfChart.SecondaryAxis>
+                        <!--Adding Legend to the SfChart-->
+                        <syncfusion:SfChart.Legend>
+                            <syncfusion:ChartLegend Visibility="Visible"/>
+                        </syncfusion:SfChart.Legend>
+                    </syncfusion:SfChart>
+                </StackPanel>
+            </Grid>
+        </PivotItem>
+        
+        <PivotItem Header="Resources/饼状图.png">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="开始日期" Height="20"></TextBlock>
+                        <input:SfDatePicker x:Name="datePickerPie1"  Width="150" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="结束日期" Height="20"></TextBlock>
+                        <input:SfDatePicker x:Name="datePickerPie2" Width="150" />
+                    </StackPanel>
+                    <Button FontFamily="Resources/iconfont.ttf#iconFont" Content="&#xe609;" Click="drawPie"></Button>
+                </StackPanel>
+                <syncfusion:SfChart HorizontalAlignment="Center" VerticalAlignment="Center" Header="饼状图" FontSize="16" x:Name="pieChart">
                     <syncfusion:SfChart.PrimaryAxis>
-                        <syncfusion:CategoryAxis Header="week" FontSize="14"/>
+                        <syncfusion:CategoryAxis Header="name" FontSize="14"/>
                     </syncfusion:SfChart.PrimaryAxis>
                     <!--Initialize the vertical axis for SfChart-->
                     <syncfusion:SfChart.SecondaryAxis>
@@ -110,27 +150,8 @@
                     <syncfusion:SfChart.Legend>
                         <syncfusion:ChartLegend Visibility="Visible"/>
                     </syncfusion:SfChart.Legend>
+                    <syncfusion:PieSeries ItemsSource = "{Binding Test}" XBindingPath="name" YBindingPath="hours"/>
                 </syncfusion:SfChart>
-                </StackPanel>
-            </Grid>
-            
-        </PivotItem>
-        <PivotItem Header="Resources/饼状图.png">
-            <StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="10">
-                <StackPanel Orientation="Horizontal">
-                    <input:SfDatePicker x:Name="datePicker2"  Width="150" />
-                    <TextBlock Text="开始日期" Height="20"></TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <input:SfDatePicker x:Name="datePicker3" Width="150" />
-                    <TextBlock Text="终止日期" Height="20"></TextBlock>
-                </StackPanel>
-                <Button FontFamily="Resources/iconfont.ttf#iconFont" Content="&#xe609;" ></Button>
-            </StackPanel>
-                <syncfusion:PieSeries HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" 
-                    Height="200" Width="300" x:Name="pieChart" XBindingPath="Category" ItemsSource="{Binding Tax}" YBindingPath="Percentage">
-                </syncfusion:PieSeries>
             </StackPanel>
         </PivotItem>
     </Pivot>

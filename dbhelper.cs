@@ -24,8 +24,9 @@ namespace DaemonTime
         }
         public SQLiteConnection Dbconnection()
         {
-
-            return new SQLiteConnection(new SQLitePlatformWinRT(), dbpath);
+            var conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbpath);
+            conn.CreateTable<Event>();
+            return conn;
         }
 
         public void CreateDatabase()
